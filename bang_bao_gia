@@ -3,106 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biên bản bàn giao tài sản</title>
+    <title>Báo Giá</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            padding: 20px;
-        }
-        .container {
-            width: 210mm;
-            min-height: 297mm;
-            margin: 15px auto;
-            padding: 5mm 10mm 10mm 10mm;
-            box-sizing: border-box;
-            background: white;
-            box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
-        }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .header .logo {
-            width: 100px;
-            height: auto;
-        }
-        .header .company-info {
-            text-align: left;
-            flex-grow: 1;
-            margin-left: 20px;
-        }
-        .company-info h2 {
-            margin: 0;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-        .company-info p {
-            margin: 0;
-            font-style: italic;
-        }
-        .date {
-            text-align: right;
-            font-style: normal;
-        }
-        .table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        .table th, .table td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-        }
-        .footer {
-            margin-top: 30px;
-            text-align: center;
-        }
-        .signatures {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 50px;
-        }
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .total { font-weight: bold; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <img src="https://pos.nvncdn.com/9015cb-66930/store/20200205_77zQM83UHbeykrs4IvHovFCz.png" alt="Logo Công Ty" class="logo">
-            <div class="company-info">
-                <h2>CÔNG TY TNHH VINACHI VIỆT NAM</h2>
-                <p>Kim Thiều - Hương Mạc - Từ Sơn - Bắc Ninh</p>
-            </div>
-        </div>
-        <p class="date"><?!= lc_ngay ?></p>
-        <h2 style="text-align: center;">BIÊN BẢN BÀN GIAO TÀI SẢN</h2>
-        <p><strong>Bên bàn giao:</strong> <?!= lc_ben_ban_giao ?></p>
-        <p><strong>Bên nhận bàn giao:</strong> <?!= lc_ben_nhan_ban_giao ?></p>
-        
-        <p><strong>Lưu ý:</strong></p>
-        <ul>
-            <li>Trường hợp cấp dùng chung cho tập thể thì phải có danh sách người sử dụng đính kèm.Người nhận có nhiệm
-vụ nhận, dán tem, bảo quản tải sản,</li>
-            <li>Tài sản để phục vụ công việc; nghiêm cấm mọi hành vi trục lợi cá nhân; sử dụng tài sản công ty vào việc riêng
-phục vụ lợi lích cá nhân.</li>
-            <li>Hạn chế việc di chuyển tài sản công ty ra khỏi khuôn viên công ty. Trường hợp đặc biệt cần có biên bản luân
-chuyểMọi sự hỏng hóc, biến dạng hoặc bất thường thì bên giao và bên nhận phải kiểm tra xác nhận kỹ lưỡng
-đảm bảo khi bàn giao, hoàn trả Vật tư, MMTB, CCDC đều đã được xử lý lỗi và sẵn sàng đưa vào sử dụng</li>
-            <li>Trách nhiệm quản lý: Là trách nhiệm đồng kiểm thực tế số lượng tài sản. Trực tiếp phân bổ mục đích sử dụng
-theo từng chức năng nhiệm vụ của mỗi cá nhân/nhóm.</li>
-            <li>Trách nhiệm sử dụng: Là toàn quyền sử dụng trong thực hiện công việc nhiệm vụ, chịu trách nhiệm chính về
-bảo quản, bảo dưỡng, báo cáo kịp thời tình trạng sản phẩm nếu có sự cố hư hỏng, rơi vỡ, bị trộm hoặc thất lạc</li>
-            <li>Chúng tôi cùng nhau tiến hành bàn giao Vật tư, MMTB, CDCD theo số lượng và tình trạng ở trên. Biên bản
-được lập thành 02 bản có giá trị pháp lý như nhau mỗi bên giữ 01 bản tất cả các tài sản trên được hủy và bỏ ra
-khỏi hệ thống quản lý</li>
-        </ul>
-        <div class="signatures">
-            <p style="text-align: center;"><strong>BÊN GIAO</strong> <br> (Ký, ghi rõ họ tên)</p>
-            <p style="text-align: center;"><strong>BÊN NHẬN</strong> <br> (Ký, ghi rõ họ tên)</p>
-            <p style="text-align: center;"><strong>BÊN LIÊN QUAN</strong> <br> (Ký, ghi rõ họ tên)</p>
-        </div>
-    </div>
+
+    <h2>BÁO GIÁ</h2>
+    <p><strong>Khách hàng:</strong> {{ customer_name }}</p>
+    <p><strong>Ngày:</strong> {{ date }}</p>
+
+    <table>
+        <tr>
+            <th>Sản phẩm</th>
+            <th>Số lượng</th>
+            <th>Giá</th>
+            <th>Tổng</th>
+        </tr>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.price }}</td>
+            <td>{{ item.total }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <p class="total">Tổng cộng: {{ grand_total }}</p>
+
 </body>
 </html>
